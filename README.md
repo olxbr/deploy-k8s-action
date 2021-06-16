@@ -1,5 +1,5 @@
-# deploy-cops-action
-Action to deploy application on COPS.
+# deploy-k8s-action
+Action to deploy application on Kubernetes.
 
 ## Usage
 
@@ -10,13 +10,16 @@ jobs:
         ...
         runs-on: [self-hosted, ...]
         steps:
-            - id: deploy-cops
-              uses: olxbr/deploy-cops-action@v1
+            - id: deploy-k8s
+              uses: olxbr/deploy-k8s-action@v1
               with:
-                # We suggest adding COPS url as repository secret
-                url: ${{ secrets.COPS_URL }}
-                # You can use the image from some other action output or something else
-                image: ${{ needs.build-n-push-docker-img.outputs.image }}
+                k8s-cluster: ${{ secrets.CLUSTER_PROD }}
+                k8s-token: ${{ secrets.CLUSTER_GH_TOKEN }}
+                # Same inside of deploy folder like prod, qa and etc...
+                environment: prod
+                namespace: cluster-namespace
+                # Docker image version that will be replaced in deployment.yml
+                version: ${{ needs.build-n-push-docker-img.outputs.tag }}
 
             - ... other steps
 ```
@@ -26,8 +29,26 @@ jobs:
 ### Runner Self-Hosted
 You have to use the **self-hosted runner** to deploy your app in the specific environment.
 
-### COPS URL
-We suggest adding COPS url as repository secret.
+### Kubernetes cluster URL and TOKEN
+We suggest adding **cluster url** and **token** as repository secret.
 
-### Image URL
-You can use the image from some other action output or something else. The image can be from different sources as long as COPS is able to use it.
+### Deployment folder
+In the root directory, create the **deploy** folder with the following structure:
+
+```
+- deploy
+    - prod/
+        - deployment.yml
+
+    - qa/
+        - deployment.yml
+
+    - other-environments/
+        - deployment.yml
+```
+
+### Deployment file with vars to replace in action
+The action replaces the vars **${version}** and **${environment}** inside of *deployment.yml*
+
+- **version:** Commonly used to identify the version of the Docker image.
+- **environment:** Only if you deem it necessary. 
