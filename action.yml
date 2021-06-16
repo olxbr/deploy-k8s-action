@@ -1,0 +1,31 @@
+
+name: 'deploy-k8s-action'
+description: 'Action to deploy application on Kubernetes clusters'
+inputs:
+  k8s-cluster:
+    description: 'Kubernetes cluster address'
+    required: true
+  k8s-token:
+    description: 'Kubernetes token'
+    required: true
+  environment:
+    description: 'Environment like prod, production, preprod and etc'
+    required: true
+  namespace:
+    description: 'Kubernetes cluster namespace'
+    required: true
+  version:
+    description: 'Docker image version'
+    required: true
+  
+runs:
+  using: 'composite'
+  steps:
+    - run: ${{ github.action_path }}/entrypoint.sh
+      shell: bash
+      env:
+        K8S_CLUSTER: ${{ inputs.k8s-cluster }}
+        K8S_TOKEN: ${{ inputs.k8s-token }}
+        ENVIRONMENT: ${{ inputs.environment }}
+        NAMESPACE: ${{ inputs.namespace }}
+        VERSION: ${{ inputs.version }}
