@@ -15,6 +15,7 @@ jobs:
               with:
                 k8s-cluster: ${{ secrets.CLUSTER_PROD }}
                 k8s-token: ${{ secrets.CLUSTER_GH_TOKEN }}
+                deployment-name: deployment-name
                 # Same inside of deploy folder like prod, qa and etc...
                 environment: prod
                 namespace: cluster-namespace

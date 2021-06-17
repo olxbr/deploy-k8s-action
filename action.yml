@@ -8,6 +8,9 @@ inputs:
   k8s-token:
     description: 'Kubernetes token'
     required: true
+  deployment-name:
+    description: 'K8s deployment name'
+    required: true
   environment:
     description: 'Environment like prod, production, preprod and etc'
     required: true
@@ -26,6 +29,7 @@ runs:
       env:
         K8S_CLUSTER: ${{ inputs.k8s-cluster }}
         K8S_TOKEN: ${{ inputs.k8s-token }}
+        DEPLOYMENT_NAME: ${{ inputs.deployment-name }}
         ENVIRONMENT: ${{ inputs.environment }}
         NAMESPACE: ${{ inputs.namespace }}
         VERSION: ${{ inputs.version }}

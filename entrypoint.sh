@@ -20,7 +20,7 @@ kubectl -n $NAMESPACE \
 
 ## check if the deploy was successful or not
 kubectl -n $NAMESPACE \
-  rollout status deployment/teams \
+  rollout status deployment/$DEPLOYMENT_NAME \
   -s $K8S_CLUSTER \
   --token=$K8S_TOKEN \
   --insecure-skip-tls-verify || {
