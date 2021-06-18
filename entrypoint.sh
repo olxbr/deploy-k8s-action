@@ -8,9 +8,7 @@ if [ -z "$VERSION" ]; then
 fi
 
 sed -i '' "s/\${version}/$VERSION/" deploy/$ENVIRONMENT/*.yml
-sed -i '' "s/\${version}/$VERSION/" deploy/$ENVIRONMENT/*.yaml
 sed -i '' "s/\${environment}/$ENVIRONMENT/" deploy/$ENVIRONMENT/*.yml
-sed -i '' "s/\${environment}/$ENVIRONMENT/" deploy/$ENVIRONMENT/*.yaml
 
 ## apply deployment
 kubectl -n $NAMESPACE \
