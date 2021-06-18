@@ -9,7 +9,8 @@ fi
 
 config_file=k8s-$ENVIRONMENT-$VERSION.yml
 
-environment=$ENVIRONMENT version=$VERSION envsubst < deploy/$ENVIRONMENT/deployment.yml  > $config_file
+sed "s/\${version}/$VERSION/" deploy/$ENVIRONMENT/deployment.yml > $config_file
+sed "s/\${environment}/$ENVIRONMENT/" deploy/$ENVIRONMENT/deployment.yml > $config_file
 
 ## apply deployment
 kubectl -n $NAMESPACE \
