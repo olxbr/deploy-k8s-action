@@ -16,7 +16,7 @@ jobs:
                 k8s-cluster: ${{ secrets.CLUSTER_PROD }}
                 k8s-token: ${{ secrets.CLUSTER_GH_TOKEN }}
                 deployment-name: deployment-name
-                # Same inside of deploy folder like prod, qa and etc...
+                # Same inside of k8s folder like prod, qa and etc...
                 environment: prod
                 namespace: cluster-namespace
                 # Docker image version that will be replaced in deployment.yml
@@ -34,22 +34,26 @@ You have to use the **self-hosted runner** to deploy your app in the specific en
 We suggest adding **cluster url** and **token** as repository secret.
 
 ### Deployment folder
-In the root directory, create the **deploy** folder with the following structure:
+In the root directory, create the **k8s** folder with the following structure:
 
 ```
-- deploy
+- k8s
     - prod/
+        - service.yml
         - deployment.yml
+        - etc...
 
     - qa/
+        - service.yml
         - deployment.yml
+        - etc...
 
     - other-environments/
-        - deployment.yml
+        - manifest.yml
 ```
 
 ### Deployment file with vars to replace in action
-The action replaces the vars **${version}** and **${environment}** inside of *deployment.yml*
+The action replaces the vars **${version}** and **${environment}** inside of **all manifest yml** in *k8s/{environment}/* folder.
 
 - **version:** Commonly used to identify the version of the Docker image.
 - **environment:** Only if you deem it necessary. 
