@@ -15,6 +15,7 @@ jobs:
               with:
                 k8s-cluster: ${{ secrets.CLUSTER_PROD }}
                 k8s-token: ${{ secrets.CLUSTER_GH_TOKEN }}
+                container-registry-host: ${{ secrets.CONTAINER_REGISTRY_HOST }}
                 deployment-name: deployment-name
                 # Same inside of k8s folder like prod, qa and etc...
                 environment: prod
@@ -53,7 +54,8 @@ In the root directory, create the **k8s** folder with the following structure:
 ```
 
 ### Deployment file with vars to replace in action
-The action replaces the vars **${version}** and **${environment}** inside of **all manifest yml** in *k8s/{environment}/* folder.
+The action replaces the vars **${version}**, **${environment}** and **${container-registry-host}** inside of **all manifest yml** in *k8s/{environment}/* folder.
 
 - **version:** Commonly used to identify the version of the Docker image.
-- **environment:** Only if you deem it necessary. 
+- **environment:** Only if you deem it necessary.
+- **container-registry-host** Container registry host, for exemple: `xxxx.dkr.ecr.us-east-1.amazonaws.com`.
