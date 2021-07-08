@@ -18,7 +18,10 @@ inputs:
     description: 'Kubernetes cluster namespace'
     required: true
   version:
-    description: 'Docker image version'
+    description: 'Image version'
+    required: true
+  container-registry-host:
+    description: 'Image container registry host'
     required: true
   
 runs:
@@ -33,3 +36,4 @@ runs:
         ENVIRONMENT: ${{ inputs.environment }}
         NAMESPACE: ${{ inputs.namespace }}
         VERSION: ${{ inputs.version }}
+        CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
