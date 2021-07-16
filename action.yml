@@ -19,10 +19,11 @@ inputs:
     required: true
   version:
     description: 'Image version'
-    required: true
+    required: false
+    default: 'latest'
   container-registry-host:
     description: 'Image container registry host'
-    required: true
+    required: false
   
 runs:
   using: 'composite'
