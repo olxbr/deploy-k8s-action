@@ -13,9 +13,11 @@ jobs:
             - id: deploy-k8s
               uses: olxbr/deploy-k8s-action@v1
               with:
+                # Don't change this value
+                container-registry-host: ${{ secrets.CONTAINER_REGISTRY_HOST }}
+                # Create cluster and token secrets inside your repository
                 k8s-cluster: ${{ secrets.CLUSTER_PROD }}
                 k8s-token: ${{ secrets.CLUSTER_GH_TOKEN }}
-                container-registry-host: ${{ secrets.CONTAINER_REGISTRY_HOST }}
                 deployment-name: deployment-name
                 # Same inside of k8s folder like prod, qa and etc...
                 environment: prod
