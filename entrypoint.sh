@@ -13,7 +13,7 @@ sed -i -e "s/\${container-registry-host}/$CONTAINER_REGISTRY_HOST/" k8s/$ENVIRON
 
 ## apply deployment
 kubectl -n $NAMESPACE \
-  apply --record -s $K8S_CLUSTER \
+  apply -s $K8S_CLUSTER \
   --token=$K8S_TOKEN \
   -f k8s/$ENVIRONMENT --recursive \
   --insecure-skip-tls-verify || exit 1
