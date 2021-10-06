@@ -24,7 +24,11 @@ inputs:
   container-registry-host:
     description: 'Image container registry host'
     required: false
-  
+  skip-rollout-check:
+    description: 'Set true if deployment does not require a rollout status check'
+    required: false
+    default: false
+
 runs:
   using: 'composite'
   steps:
@@ -38,3 +42,4 @@ runs:
         NAMESPACE: ${{ inputs.namespace }}
         VERSION: ${{ inputs.version }}
         CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
+        SKIP_ROLLOUT_CHECK: ${{ inputs.skip-rollout-check }}

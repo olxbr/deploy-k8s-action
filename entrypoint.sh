@@ -18,6 +18,10 @@ kubectl -n $NAMESPACE \
   -f k8s/$ENVIRONMENT --recursive \
   --insecure-skip-tls-verify || exit 1
 
+if [ "$SKIP_ROLLOUT_CHECK" = true ] ; then
+  exit 0;
+fi
+
 ## check if the deploy was successful or not
 kubectl -n $NAMESPACE \
   rollout status deployment/$DEPLOYMENT_NAME \
