@@ -1,0 +1,39 @@
+name: 'deploy-k8s-action: cronjob'
+description: 'Action to deploy cronjob on Kubernetes clusters'
+inputs:
+  k8s-cluster:
+    description: 'Kubernetes cluster address'
+    required: true
+  k8s-token:
+    description: 'Kubernetes token'
+    required: true
+  cronjob-name:
+    description: 'K8s cronjob name'
+    required: true
+  environment:
+    description: 'Environment like prod, production, preprod and etc'
+    required: true
+  namespace:
+    description: 'Kubernetes cluster namespace'
+    required: true
+  version:
+    description: 'Image version'
+    required: false
+    default: 'latest'
+  container-registry-host:
+    description: 'Image container registry host'
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - run: ${{ github.action_path }}/entrypoint.sh
+      shell: bash
+      env:
+        K8S_CLUSTER: ${{ inputs.k8s-cluster }}
+        K8S_TOKEN: ${{ inputs.k8s-token }}
+        CRONJOB_NAME: ${{ inputs.cronjob-name }}
+        ENVIRONMENT: ${{ inputs.environment }}
+        NAMESPACE: ${{ inputs.namespace }}
+        VERSION: ${{ inputs.version }}
+        CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
