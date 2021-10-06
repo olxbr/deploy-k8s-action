@@ -40,7 +40,7 @@ jobs:
         runs-on: [self-hosted, ...]
         steps:
             - id: deploy-k8s
-              uses: olxbr/deploy-k8s-action/cronjob@v1.1.0
+              uses: olxbr/deploy-k8s-action/cronjobs@v1.1.0
               with:
                 # Don't change this value
                 container-registry-host: ${{ secrets.CONTAINER_REGISTRY_HOST }}
