@@ -24,6 +24,9 @@ jobs:
                 namespace: cluster-namespace
                 # Docker image version that will be replaced in deployment.yml
                 version: ${{ needs.build-n-push-docker-img.outputs.tag }}
+                # Set true if deployment does not require a rollout status check
+                # It's not required!
+                skip-rollout-check: false
 
             - ... other steps
 ```
@@ -61,3 +64,4 @@ The action replaces the vars **${version}**, **${environment}** and **${containe
 - **version:** Commonly used to identify the version of the Docker image.
 - **environment:** Only if you deem it necessary.
 - **container-registry-host** Container registry host, for exemple: `xxxx.dkr.ecr.us-east-1.amazonaws.com`.
+- **skip-rollout-check** Set true if deployment does not require a rollout status check.
