@@ -43,3 +43,5 @@ runs:
         VERSION: ${{ inputs.version }}
         CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
         SKIP_ROLLOUT_CHECK: ${{ inputs.skip-rollout-check }}
+    - uses: actions/checkout@main
+
