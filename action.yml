@@ -37,15 +37,15 @@ runs:
   using: 'composite'
   steps:
     - uses: actions/checkout@main
-    - run: ${{ github.action_path }}/entrypoint.sh
-      shell: bash
-      env:
-        K8S_CLUSTER: ${{ inputs.k8s-cluster }}
-        K8S_TOKEN: ${{ inputs.k8s-token }}
-        DEPLOYMENT_NAME: ${{ inputs.deployment-name }}
-        ENVIRONMENT: ${{ inputs.environment }}
-        NAMESPACE: ${{ inputs.namespace }}
-        VERSION: ${{ inputs.version }}
-        CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
-        SKIP_ROLLOUT_CHECK: ${{ inputs.skip-rollout-check }}
+#    - run: ${{ github.action_path }}/entrypoint.sh
+#      shell: bash
+#      env:
+#        K8S_CLUSTER: ${{ inputs.k8s-cluster }}
+#        K8S_TOKEN: ${{ inputs.k8s-token }}
+#        DEPLOYMENT_NAME: ${{ inputs.deployment-name }}
+#        ENVIRONMENT: ${{ inputs.environment }}
+#        NAMESPACE: ${{ inputs.namespace }}
+#        VERSION: ${{ inputs.version }}
+#        CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
+#        SKIP_ROLLOUT_CHECK: ${{ inputs.skip-rollout-check }}
 
