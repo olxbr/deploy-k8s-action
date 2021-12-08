@@ -32,6 +32,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - uses: actions/checkout@main
     - run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
       env:
@@ -43,5 +44,4 @@ runs:
         VERSION: ${{ inputs.version }}
         CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
         SKIP_ROLLOUT_CHECK: ${{ inputs.skip-rollout-check }}
-    - uses: actions/checkout@main
 
