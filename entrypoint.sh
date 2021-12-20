@@ -35,3 +35,15 @@ kubectl -n $NAMESPACE \
   --token=$K8S_TOKEN \
   -f k8s/$ENVIRONMENT --recursive \
   --insecure-skip-tls-verify; exit 1; }
+
+## Install Trivy
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3
+
+## Vulnerabilty scans
+SCANS=$(ls security)
+for SCAN in $SCANS; do
+    echo "Executing scan script $SCAN"
+    sh "security/$SCAN"
+    echo "================="
+    echo ""
+done
