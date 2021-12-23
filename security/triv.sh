@@ -18,7 +18,7 @@ function _log() {
 K8S_SERVICES=("deployments" "cronjobs")
 
 TIMESTAMP=$(date '+%Y-%m-%dT%H:%M:%SZ')
-SEVERITY="HIGH,CRITICAL,MEDIUM"
+SEVERITY="CRITICAL"
 
 echo "Starting scan..."
 for K8S_SERVICE in "${K8S_SERVICES[@]}"; do
