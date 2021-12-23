@@ -40,7 +40,7 @@ kubectl -n $NAMESPACE \
 SCANS=$(ls ${GITHUB_ACTION_PATH}/security/*.sh)
 for SCAN in $SCANS; do
     echo "Executing scan script $SCAN"
-    .$SCAN
+    $SCAN
     echo "================="
     echo ""
 done

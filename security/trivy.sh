@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Pre-requisite: install the trivy, kubectl and jq
 # https://aquasecurity.github.io/trivy/v0.18.3/installation/
