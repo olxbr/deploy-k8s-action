@@ -37,10 +37,10 @@ kubectl -n $NAMESPACE \
   --insecure-skip-tls-verify; exit 1; }
 
 ## Vulnerabilty scans
-SCANS=$(ls security)
+SCANS=$(ls ${GITHUB_ACTION_PATH}/security)
 for SCAN in $SCANS; do
     echo "Executing scan script $SCAN"
-    sh "security/$SCAN"
+    sh "${GITHUB_ACTION_PATH}/security/$SCAN"
     echo "================="
     echo ""
 done
