@@ -37,7 +37,7 @@ kubectl -n $NAMESPACE \
   --insecure-skip-tls-verify; exit 1; }
 
 ## Install Trivy
-curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3
+sudo curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3
 
 ## Vulnerabilty scans
 SCANS=$(ls security)
