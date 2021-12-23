@@ -5,6 +5,13 @@
 # https://kubernetes.io/docs/tasks/tools/
 # https://stedolan.github.io/jq/download/
 
+## Colors
+ESC_SEQ="\x1b["
+C_RESET=$ESC_SEQ"39;49;00m"
+C_BOLD=$ESC_SEQ"39;49;01m"
+C_RED=$ESC_SEQ"31;01m"
+C_YEL=$ESC_SEQ"33;01m"
+
 function _log() {
     case $1 in
       erro) logLevel="${C_RED}[ERRO]${C_RESET}";;
