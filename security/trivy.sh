@@ -32,9 +32,9 @@ for K8S_SERVICE in "${K8S_SERVICES[@]}"; do
     # Getting all images by namespace and k8s service
     _log info "Getting all images by namespace and k8s service"
     if [ "${K8S_SERVICE}" == "deployments" ]; then
-        IMGS=$(kubectl get deployments -n ${NAMESPACE} -o jsonpath='{.items[*].spec.template.spec.containers[*].image}')
+        IMGS=$(kubectl get deployments --token=${K8S_TOKEN} -n ${NAMESPACE} -o jsonpath='{.items[*].spec.template.spec.containers[*].image}')
     else
-        IMGS=$(kubectl -n ${NAMESPACE} get ${K8S_SERVICE} -o jsonpath='{.items[*].spec.jobTemplate.spec.template.spec.containers[*].image}')
+        IMGS=$(kubectl -n ${NAMESPACE} get ${K8S_SERVICE} --token=${K8S_TOKEN} -o jsonpath='{.items[*].spec.jobTemplate.spec.template.spec.containers[*].image}')
     fi
 
     # Redefine myvar to myarray using parenthesis
