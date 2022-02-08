@@ -7,9 +7,9 @@ if [ -z "$VERSION" ]; then
   exit 1
 fi
 
-sed -i -e "s/\${version}/$VERSION/" k8s/$ENVIRONMENT/*.yml
-sed -i -e "s/\${environment}/$ENVIRONMENT/" k8s/$ENVIRONMENT/*.yml
-sed -i -e "s/\${container-registry-host}/$CONTAINER_REGISTRY_HOST/" k8s/$ENVIRONMENT/*.yml
+sed -i -e "s/\${version}/$VERSION/" k8s/$ENVIRONMENT/*.y*ml
+sed -i -e "s/\${environment}/$ENVIRONMENT/" k8s/$ENVIRONMENT/*.y*ml
+sed -i -e "s/\${container-registry-host}/$CONTAINER_REGISTRY_HOST/" k8s/$ENVIRONMENT/*.y*ml
 
 ## apply deployment
 kubectl -n $NAMESPACE \
