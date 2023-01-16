@@ -17,7 +17,7 @@ jobs:
                 container-registry-host: ${{ secrets.CONTAINER_REGISTRY_HOST }}
                 # Create cluster and token secrets inside your repository
                 k8s-cluster: ${{ secrets.CLUSTER_PROD }}
-                k8s-token: ${{ secrets.CLUSTER_GH_TOKEN }}
+                k8s-token: ${{ secrets.CLUSTER_TOKEN }}
                 deployment-name: deployment-name
                 # Same inside of k8s folder like prod, qa and etc...
                 environment: prod
