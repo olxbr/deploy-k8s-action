@@ -31,6 +31,9 @@ jobs:
             - ... other steps
 ```
 
+> If you use the same tag of the previous deployment, use `force-restart:true`.
+> This will force the restart of the deployment
+
 ## Prerequisites
 
 ### Runner Self-Hosted
