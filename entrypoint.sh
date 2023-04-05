@@ -78,6 +78,16 @@ kubectl -n $NAMESPACE \
   -f k8s/$ENVIRONMENT --recursive \
   --insecure-skip-tls-verify; exit 1; }
 
+
+## Force restart
+if [ "${FORCE_RESTART}" = true ] ; then
+    kubectl -n $NAMESPACE \
+        rollout restart deployment/$DEPLOYMENT_NAME \
+        -s $K8S_CLUSTER \
+        --token=$K8S_TOKEN \
+        --insecure-skip-tls-verify
+fi
+
 ## Vulnerabilty scans
 SCANS=$(ls ${GITHUB_ACTION_PATH}/security/*.sh)
 for SCAN in $SCANS; do

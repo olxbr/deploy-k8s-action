@@ -28,6 +28,11 @@ inputs:
     description: 'Set true if deployment does not require a rollout status check'
     required: false
     default: false
+  force-restart:
+    description: 'Force the restart of the deployment (use this with same tag update)'
+    required: false
+    default: false
+
 
 runs:
   using: 'composite'
@@ -43,3 +48,4 @@ runs:
         VERSION: ${{ inputs.version }}
         CONTAINER_REGISTRY_HOST: ${{ inputs.container-registry-host }}
         SKIP_ROLLOUT_CHECK: ${{ inputs.skip-rollout-check }}
+        FORCE_RESTART: ${{ inputs.force-restart }}
